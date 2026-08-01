@@ -21,9 +21,7 @@ export default function AdminLandingPage() {
       <header className="border-b border-gray-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy text-white shadow-md">
-              <Zap className="h-6 w-6 fill-current text-gold" />
-            </div>
+            <Image src="/logo.jpg" alt="Logo" width={40} height={40} className="rounded-xl object-cover shadow-md" />
             <div>
               <span className="text-xl font-bold text-navy block leading-tight">Borderless Afro</span>
               <span className="text-xs uppercase tracking-widest text-gold font-semibold block">Legal Hub • Admin Portal</span>
@@ -31,21 +29,13 @@ export default function AdminLandingPage() {
           </div>
 
           <div className="flex items-center gap-4">
-            {isAuthenticated ? (
+            {isAuthenticated && (
               <Link
                 href="/admin"
                 className="inline-flex items-center gap-2 rounded-lg bg-navy px-5 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-navy-2 transition-all hover:shadow-lg"
               >
                 Go to Dashboard
                 <ArrowRight className="h-4 w-4 text-gold" />
-              </Link>
-            ) : (
-              <Link
-                href="/admin/login"
-                className="inline-flex items-center gap-2 rounded-lg bg-navy px-5 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-navy-2 transition-all hover:shadow-lg"
-              >
-                <Lock className="h-4 w-4 text-gold" />
-                Sign In
               </Link>
             )}
           </div>

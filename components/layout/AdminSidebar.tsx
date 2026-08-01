@@ -79,9 +79,12 @@ export function AdminSidebar() {
   return (
     <Sidebar className="border-r border-gray-200 dark:border-navy-2">
       <SidebarHeader className="border-b border-gray-200 dark:border-navy-2 px-6 h-16 flex items-center justify-center bg-navy text-white">
-        <Link href="/admin" className="flex items-center gap-2 w-full">
-          <Image src="/logo.jpg" alt="Logo" width={32} height={32} className="rounded-full object-cover" />
-          <span className="text-xl font-bold text-white">Admin Dashboard</span>
+        <Link href="/admin" className="flex items-center gap-3 w-full">
+          <Image src="/logo.jpg" alt="Logo" width={32} height={32} className="rounded-xl object-cover" />
+          <div className="flex flex-col">
+            <span className="text-lg font-bold text-white leading-tight">Borderless Afro</span>
+            <span className="text-[10px] font-semibold text-gold tracking-widest uppercase">Legal Hub • Admin Portal</span>
+          </div>
         </Link>
       </SidebarHeader>
       <SidebarContent className="bg-navy text-white">

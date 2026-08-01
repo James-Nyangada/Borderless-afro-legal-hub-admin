@@ -3,6 +3,7 @@
 import { FileText, Users, Mail, ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { fetchAPI } from '@/lib/api';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -14,11 +15,8 @@ export default function AdminDashboardHome() {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api/v1'}/dashboard/stats`);
-        if (res.ok) {
-          const data = await res.json();
-          setDashboardData(data.data);
-        }
+        const data = await fetchAPI('/dashboard/stats');
+        setDashboardData(data.data);
       } catch (error) {
         console.error('Failed to fetch dashboard data', error);
       } finally {
