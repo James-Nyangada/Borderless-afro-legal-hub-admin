@@ -1,6 +1,7 @@
 'use client';
 
 import { Zap, Lock, Mail, ArrowRight } from 'lucide-react';
+import Image from "next/image";
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -50,7 +51,7 @@ export default function LoginPage() {
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
           <div className="flex h-12 w-12 items-center justify-center rounded bg-navy text-white shadow-lg">
-            <Zap className="h-8 w-8 fill-current text-gold" />
+            <Image src="/logo.jpg" alt="Logo" width={64} height={64} className="rounded-full mx-auto mb-6 object-cover" />
           </div>
         </div>
         <h2 className="mt-6 text-center text-3xl font-extrabold text-navy">

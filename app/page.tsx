@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from "next/image";
 import { Zap, ShieldCheck, Lock, ArrowRight, FileText, Users, Mail, Settings, ChevronRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 

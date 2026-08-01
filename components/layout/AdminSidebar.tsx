@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from "next/image";
 import { usePathname, useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { 
@@ -79,10 +80,8 @@ export function AdminSidebar() {
     <Sidebar className="border-r border-gray-200 dark:border-navy-2">
       <SidebarHeader className="border-b border-gray-200 dark:border-navy-2 px-6 h-16 flex items-center justify-center bg-navy text-white">
         <Link href="/admin" className="flex items-center gap-2 w-full">
-          <div className="flex h-8 w-8 items-center justify-center rounded bg-white text-navy">
-            <Zap className="h-5 w-5 fill-current text-gold" />
-          </div>
-          <span className="text-xl font-bold text-white">Admin UI</span>
+          <Image src="/logo.jpg" alt="Logo" width={32} height={32} className="rounded-full object-cover" />
+          <span className="text-xl font-bold text-white">Admin Dashboard</span>
         </Link>
       </SidebarHeader>
       <SidebarContent className="bg-navy text-white">
