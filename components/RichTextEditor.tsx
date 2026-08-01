@@ -86,6 +86,7 @@ export default function RichTextEditor({ value, onChange, placeholder }: RichTex
   return (
     <div className="bg-white rounded-md overflow-hidden ring-1 ring-gray-300 focus-within:ring-2 focus-within:ring-navy">
       <ReactQuill 
+        // @ts-ignore
         ref={quillRef}
         theme="snow"
         defaultValue={value}
