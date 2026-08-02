@@ -109,9 +109,9 @@ export default function AdminDashboardHome() {
             </ul>
           </CardContent>
           <div className="bg-gray-50/50 px-6 py-4 border-t border-gray-100 rounded-b-xl">
-            <a href="#" className="text-sm font-medium text-navy hover:text-gold transition-colors flex items-center gap-1">
+            <Link href="/admin/activity" className="text-sm font-medium text-navy hover:text-gold transition-colors flex items-center gap-1">
               View all activity <ArrowUpRight className="h-4 w-4" />
-            </a>
+            </Link>
           </div>
         </Card>
 
