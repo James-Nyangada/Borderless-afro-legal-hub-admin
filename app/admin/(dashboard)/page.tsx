@@ -15,7 +15,7 @@ export default function AdminDashboardHome() {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const data = await fetchAPI('/dashboard/stats');
+        const data = await fetchAPI('/dashboard');
         setDashboardData(data.data);
       } catch (error) {
         console.error('Failed to fetch dashboard data', error);
