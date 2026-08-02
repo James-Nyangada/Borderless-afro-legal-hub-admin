@@ -10,6 +10,7 @@ import { Badge } from '@/components/ui/badge';
 
 export default function AdminDashboardHome() {
   const [dashboardData, setDashboardData] = useState<any>(null);
+  const [analyticsData, setAnalyticsData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -24,7 +25,18 @@ export default function AdminDashboardHome() {
       }
     };
 
+    const fetchAnalyticsData = async () => {
+      try {
+        const res = await fetch('/api/analytics');
+        const data = await res.json();
+        setAnalyticsData(data);
+      } catch (error) {
+        console.error('Failed to fetch analytics', error);
+      }
+    };
+
     fetchDashboardData();
+    fetchAnalyticsData();
   }, []);
 
   const stats = [
@@ -124,7 +136,9 @@ export default function AdminDashboardHome() {
             <div className="flex items-end justify-between mb-8">
               <div>
                 <p className="text-sm text-gray-500 mb-1">Total Visits</p>
-                <p className="text-3xl font-bold tracking-tight text-navy">12,450</p>
+                <p className="text-3xl font-bold tracking-tight text-navy">
+                  {analyticsData ? analyticsData.pageviews.toLocaleString() : '...'}
+                </p>
               </div>
               <Badge variant="outline" className="bg-green-50 text-green-700 hover:bg-green-100 border-green-200 font-medium">
                 <ArrowUpRight className="h-3 w-3 mr-1" />
@@ -135,18 +149,16 @@ export default function AdminDashboardHome() {
             <div>
               <p className="text-sm font-medium text-gray-900 mb-4">Top Articles</p>
               <ul className="space-y-4">
-                <li className="flex items-center justify-between group cursor-pointer">
-                  <span className="text-sm text-gray-600 group-hover:text-navy transition-colors">Breaking Into Product Design...</span>
-                  <span className="text-sm font-semibold text-navy">4,230 views</span>
-                </li>
-                <li className="flex items-center justify-between group cursor-pointer">
-                  <span className="text-sm text-gray-600 group-hover:text-navy transition-colors">The Future of AI in Legal Tech</span>
-                  <span className="text-sm font-semibold text-navy">3,100 views</span>
-                </li>
-                <li className="flex items-center justify-between group cursor-pointer">
-                  <span className="text-sm text-gray-600 group-hover:text-navy transition-colors">Navigating Cross-Border M&A...</span>
-                  <span className="text-sm font-semibold text-navy">2,850 views</span>
-                </li>
+                {analyticsData ? analyticsData.topPosts.slice(0, 3).map((post: any, idx: number) => (
+                  <li key={idx} className="flex items-center justify-between group cursor-pointer">
+                    <span className="text-sm text-gray-600 group-hover:text-navy transition-colors truncate max-w-[200px]" title={post.title}>
+                      {post.title}
+                    </span>
+                    <span className="text-sm font-semibold text-navy">{post.views.toLocaleString()} views</span>
+                  </li>
+                )) : (
+                  <li className="text-sm text-gray-500 text-center py-2">Loading analytics...</li>
+                )}
               </ul>
             </div>
           </CardContent>
