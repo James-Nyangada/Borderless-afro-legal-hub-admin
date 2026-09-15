@@ -226,7 +226,7 @@ export default function PostEditorPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Content</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Content <span className="text-xs text-gray-500 font-normal ml-1">(Skip a line to create a new paragraph and leave a space)</span></label>
                 <RichTextEditor value={content} onChange={setContent} />
               </div>
             </div>
